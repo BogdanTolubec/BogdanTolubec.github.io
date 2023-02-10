@@ -1,0 +1,25 @@
+body {
+    background: rgb(214, 213, 213);
+}
+.wrapper{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+.closing-button {
+    text-decoration: none;
+    display: inline-block;
+    margin: 10px;
+    color: rgb(182, 178, 178);
+    box-shadow: 0 0 0 2px white;
+    padding: 20px 0;
+    width: 90%;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative;
+    overflow: hidden;
+}

@@ -1,0 +1,37 @@
+.Pop_up_modal{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(126, 118, 118, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.Pop_up_modal.active{
+    opacity: 1;
+    pointer-events: all;
+}
+
+.Pop_up_modal_content{
+    max-height: 500px;
+    padding: 20px;
+    display: block;
+    border-radius: 12px;
+    background-color: white;
+    width: 50%;
+    transform: scale(0.5);
+    transition: 0.4s all;
+    overflow-y: scroll;
+}
+
+.Pop_up_modal_content.active{
+    position: absolute;
+    transform: scale(1);
+    flex-direction: column;
+}

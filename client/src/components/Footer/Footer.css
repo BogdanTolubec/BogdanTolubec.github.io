@@ -1,0 +1,11 @@
+.footer_box{
+    background-color: rgb(182, 189, 186);
+    text-align: center;
+    flex: 0 0 auto;
+    border-color: rgb(107, 107, 107);
+    border-style: solid;
+    border-right: 0px;
+    border-left: 0px;
+    border-bottom: 0px;
+    height: 100px;
+}

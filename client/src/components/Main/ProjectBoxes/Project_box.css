@@ -1,0 +1,44 @@
+.Project_box {
+    height: 200px;
+    width: 230px;
+    padding: 5px;
+    background-color: white;
+    box-shadow: -1px 11px 22px 0px rgba(0,0,0,0.4);
+        -webkit-box-shadow: -1px 11px 22px 0px rgba(0,0,0,0.4);
+        -moz-box-shadow: -1px 11px 22px 0px rgba(0,0,0,0.4);
+    justify-content: center;
+    align-content: center;
+}
+
+.project_wrapper{
+    margin: 30px;
+    height: 230px;
+    width: 260px;
+}
+
+.Project_box:hover{
+    cursor: pointer;
+    height: 230px;
+    width: 260px;
+    transition: 2s;
+}
+
+img{
+    height: 70%;
+    width: 100%;
+    object-fit: contain;
+}
+
+p{
+    text-align: center;
+}
+
+.reviewed{
+    margin: auto;
+    color:aquamarine;
+}
+
+.not_reviewed{
+    margin: auto;
+    color:rgb(247, 85, 85);
+}
