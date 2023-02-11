@@ -4,7 +4,7 @@ import Sign_in_modal from './Authorisation/SignIn/SignInModal';
 import { Context } from '../../index'
 import { observer } from 'mobx-react-lite'
 import './Menu.css'
-import { ADMIN_PAGE_ROUTE, MAIN_PAGE_ROUTE, REVIEW_PAGE_ROUTE, WATCHLIST_ROUTE } from '../../utils/consts';
+import { ADMIN_PAGE_ROUTE, CREATE_NEW_PROJECT_PAGE, MAIN_PAGE_ROUTE, REVIEW_PAGE_ROUTE, WATCHLIST_ROUTE } from '../../utils/consts';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom'
 import { login, registration } from '../../http/userApi';
@@ -53,6 +53,8 @@ const Menu = observer(() => {
 
                 <li><Link to = {MAIN_PAGE_ROUTE}>Home</Link></li>
                 <li><Link to = {WATCHLIST_ROUTE}>Watchlist</Link></li>
+                <li><Link to = {CREATE_NEW_PROJECT_PAGE}>My Project</Link></li>
+
 
                 {jwt_decode(localStorage.getItem('token')).role === 'ADMIN' ? 
                 (<><li><Link to={ADMIN_PAGE_ROUTE}>Admin panel</Link></li>

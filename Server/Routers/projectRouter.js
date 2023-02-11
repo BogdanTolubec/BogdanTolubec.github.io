@@ -3,7 +3,7 @@ const router = Router()
 const projectController = require("../Controllers/projectController")
 const checkRoleMiddleware = require('../middleware/roleCheckingMiddleware')
 
-router.post('/', checkRoleMiddleware('ADMIN'), projectController.create)
+router.post('/'/*, checkRoleMiddleware('ADMIN')*/, projectController.create)
 router.post('/verifyProject', checkRoleMiddleware('REVIEWER'), projectController.setProjectReviewedStatus) //Admin has no limits in access
 router.get('/', projectController.getAll)
 router.get('/:id', projectController.getOne)
