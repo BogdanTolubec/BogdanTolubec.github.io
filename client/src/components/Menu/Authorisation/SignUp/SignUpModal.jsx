@@ -19,8 +19,6 @@ function Sign_up_modal({setActive, active, setSignUp}){
                 <label>Password</label>
                 <input type = "password" placeholder='********' value = {password} onChange = {(e) => {setPassword(e.target.value)} }></input>
 
-                <a href='/'>I want to be a reviewer!</a>
-
             <button onClick={() => {setSignUp(email, password)}}> Sign Up</button>
             </div>
         </Pop_up_modal>
