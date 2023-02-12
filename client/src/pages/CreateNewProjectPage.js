@@ -1,20 +1,68 @@
+import { observer } from "mobx-react-lite";
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
 import CreateProjectModal from "../components/Main/AdminModals/ProjectCreateModal";
+import jwt_decode from "jwt-decode"
+import { Context } from "..";
+import { fetchProjects } from "../http/projectApi";
+import Project_box from "../components/Main/ProjectBoxes/Project_box";
+import Project_box_pop_up from "../components/Main/ProjectBoxPopUp/ProjectBoxPopUp";
+import CreateEventModal from "../components/Main/AdminModals/CreateEventModal";
 
-const CreateNewProjectPage = () => {
+const CreateNewProjectPage = observer(() => {
 
-    const [activeCreateProjectModal, setCreateProjectModalActive] = useState(false)
+    const [Project_box_modal_active, set_project_box_modal_active] = useState(false)
+    const [Create_event_modal_active, set_create_event_modal_active] = useState(false)
+    const [ActiveCreateProjectModal, set_create_project_modal_active] = useState(false)
+
+    const {project} = useContext(Context)
+
+    useEffect ( () => {
+        fetchProjects().then(data => {
+            data = data.filter(element => element.userId === jwt_decode(localStorage.getItem('token')).id)
+            project.setProjects(data) //loading data about all projects after page loading
+        })
+    }, [])
 
     return(
-        <div>
+        <div className = "main_div">
+            <div className = "projects_wrapper">
+                {   project.projects.map( (projectIterate) => 
+                    <Project_box key = {projectIterate.id} img_scr = {projectIterate.projectIcon}
+                        set_box_active = {project.setSelectedProject} selectedProject = {projectIterate} set_Project_box_modal_active = {set_project_box_modal_active}>
+
+                        {projectIterate.projectName}
+
+                    </Project_box>) //rendering all of our project boxes
+                }
+
+                <Project_box_pop_up setActive={set_project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {false}>
+                    <div className = "wrapper">
+                        <div className='project_name'>
+                            {project.selectedProject.projectName}
+                            <img src = {project.selectedProject.projectIcon} alt = "no img"></img>
+                        </div>
+
+                        <div>
+                            {project.selectedProject.description}
+                        </div>
+                    </div>
+
+                </Project_box_pop_up>
+            </div>
+
             <button type="submit" onClick = { () => {
-                setCreateProjectModalActive(true)}
+                set_create_project_modal_active(true)}
                 }> Create project </button>
 
-            <CreateProjectModal active = {activeCreateProjectModal} setActive = {setCreateProjectModalActive}/>
+            <button type="submit" onClick = { () => {
+                set_create_event_modal_active(true)}
+                }> Create event </button>
+
+            <CreateProjectModal active = {ActiveCreateProjectModal} setActive = {set_create_project_modal_active}/>
+            <CreateEventModal active = {Create_event_modal_active} setActive = {set_create_event_modal_active} />
         </div>
     );
-}
+})
 
 export default CreateNewProjectPage

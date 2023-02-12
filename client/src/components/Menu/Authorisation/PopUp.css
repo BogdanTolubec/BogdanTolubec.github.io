@@ -11,6 +11,7 @@
     opacity: 0;
     pointer-events: none;
     transition: 0.5s;
+    z-index: 1000;
 }
 
 .Pop_up_modal.active{

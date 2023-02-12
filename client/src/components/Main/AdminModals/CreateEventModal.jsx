@@ -22,33 +22,56 @@ const CreateEventModal = observer(({active, setActive}) => {
     const [moneySupply, setMoneySupply] = useState()
     const [idCalendar,setidCalendar] = useState()
 
-    const addProject = () => {
+    function isProjectLegal(project, projectName){
 
-        try{
-        let formData = {
-        projectName: projectName,
-        eventDate: eventDate,
-        tokensPerEvent: tokensPerEvent,
-        moneySupply: moneySupply,
-        eventCalendarCalendarId: idCalendar
-        }
+        var isProjectLegal = false;
 
-        console.log("after form data: " + JSON.stringify(formData))
-
-        createProjectEvent(formData).then(() => {
-            alert("Success")
-            setProjectName('')
-            setEventDate('')
-            setTokensPerEvent(0)
-            setMoneySupply(0)
-            setidCalendar(0)
+        project.projects.map( (projectIterate) => {
+            if(projectIterate.projectName === projectName){
+                isProjectLegal = true;
+            }
         })
 
-        inputsClear(inputs)
-        } catch (e){
-        alert(e)
-        inputsClear(inputs)
+        return isProjectLegal
     }
+
+    const addProjectEvent = () => {
+        if(isProjectLegal(project, projectName)){
+
+            try{
+
+            let formData = {
+            projectName: projectName,
+            eventDate: eventDate,
+            tokensPerEvent: tokensPerEvent,
+            moneySupply: moneySupply,
+            eventCalendarCalendarId: idCalendar
+            }
+
+            console.log("after form data: " + JSON.stringify(formData))
+
+            createProjectEvent(formData).then(() => {
+                alert("Success")
+                setProjectName('')
+                setEventDate('')
+                setTokensPerEvent(0)
+                setMoneySupply(0)
+                setidCalendar(0)
+            })
+
+            inputsClear(inputs)
+            } 
+            
+            catch (e){
+                alert(e)
+                inputsClear(inputs)
+        }
+    }
+
+    else {
+        alert("It's not your project to change!")
+    }
+
     }
 
     return(
@@ -68,7 +91,7 @@ const CreateEventModal = observer(({active, setActive}) => {
                 <input className='inputs' onChange = {(e) => {setMoneySupply(e.target.value)}} placeholder = '1000'></input>
 
 
-                <button id = 'add' onClick={() => {addProject()}}> Create event </button>
+                <button id = 'add' onClick={() => {addProjectEvent()}}> Create event </button>
             </div>
         </Pop_up_modal>
     );
