@@ -18,7 +18,7 @@ const WatchlistProject = sequelize.define('watchlist_project', {
 
 const Project = sequelize.define('project', {
     id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
-    projectIcon: {type: DataTypes.STRING, primaryKey: true, defaultValue: "https://st4.depositphotos.com/10376142/27856/v/600/depositphotos_278561428-stock-illustration-black-blockchain-technology-icon-isolated.jpg"},
+    projectIcon: {type: DataTypes.STRING, defaultValue: "https://st4.depositphotos.com/10376142/27856/v/600/depositphotos_278561428-stock-illustration-black-blockchain-technology-icon-isolated.jpg"},
     projectName: {type: DataTypes.STRING, unique: true, allowNull: false},
     description: {type: DataTypes.TEXT, allowNull: false},
     tokenPrice: {type: DataTypes.FLOAT, allowNull: false},
@@ -46,6 +46,10 @@ const ProjectEvent = sequelize.define('project_event', {
 
 User.hasOne(Watchlist)
 Watchlist.belongsTo(User)
+
+
+User.hasMany(Project)
+Project.belongsTo(User)
 
 Watchlist.hasMany(WatchlistProject)
 WatchlistProject.belongsTo(Watchlist)

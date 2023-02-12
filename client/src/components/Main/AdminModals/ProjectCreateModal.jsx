@@ -6,6 +6,7 @@ import { createProject } from '../../../http/projectApi';
 import Pop_up_modal from '../../Menu/Authorisation/PopUp';
 import { inputsClear } from './clearFunction';
 import './ProjectCreateModal.css'
+import jwt_decode from 'jwt-decode'
 
 const inputs = document.getElementsByClassName('project_inputs')
 
@@ -15,6 +16,7 @@ const CreateProjectModal = observer(({active, setActive}) => {
     todayDate =  todayDate.getFullYear() + "-" + todayDate.getMonth() + "-" + todayDate.getDate()
 
     const {project} = useContext(Context)
+    const {user} = useContext(Context)
 
     const [icon, setIcon] = useState('https://st4.depositphotos.com/10376142/27856/v/600/depositphotos_278561428-stock-illustration-black-blockchain-technology-icon-isolated.jpg')
     const [name, setName] = useState()
@@ -40,7 +42,8 @@ const CreateProjectModal = observer(({active, setActive}) => {
         projectStage: projectStage,
         realMoneySupply: realMoneySupply,
         predictMoneySupply: predictMoneySupply,
-        keywords: keywords}
+        keywords: keywords,
+        userId: (jwt_decode(localStorage.getItem('token')).id)}
 
         createProject(formData).then(alert("Success")).then(() => {
             setIcon('')

@@ -17,9 +17,9 @@ export const updateReviewStatusOnProject = async (info) => {
     return data
 }
 
-export const fetchProjects = async (projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords) => {
+export const fetchProjects = async (projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, userId) => {
     const {data} = await $host.get('/api/project', {params: {
-        projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords}
+        projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, userId}
     })
 
     return data
