@@ -8,6 +8,7 @@ import { fetchProjects } from "../http/projectApi";
 import Project_box from "../components/Main/ProjectBoxes/Project_box";
 import Project_box_pop_up from "../components/Main/ProjectBoxPopUp/ProjectBoxPopUp";
 import CreateEventModal from "../components/Main/AdminModals/CreateEventModal";
+import "./PagesStyles/CreateProjectPageStyle.css"
 
 const CreateNewProjectPage = observer(() => {
 
@@ -51,13 +52,15 @@ const CreateNewProjectPage = observer(() => {
                 </Project_box_pop_up>
             </div>
 
-            <button type="submit" onClick = { () => {
-                set_create_project_modal_active(true)}
-                }> Create project </button>
+            <div className = "control_buttons_user">
+                <button type="submit" onClick = { () => {
+                    set_create_project_modal_active(true)}
+                    }> Create project </button>
 
-            <button type="submit" onClick = { () => {
-                set_create_event_modal_active(true)}
-                }> Create event </button>
+                <button type="submit" onClick = { () => {
+                    set_create_event_modal_active(true)}
+                    }> Create event </button>
+            </div>
 
             <CreateProjectModal active = {ActiveCreateProjectModal} setActive = {set_create_project_modal_active}/>
             <CreateEventModal active = {Create_event_modal_active} setActive = {set_create_event_modal_active} />
