@@ -3,6 +3,5 @@
 }
 
 .calcultor_inputs{
-    display: flex;
-    flex-direction: column;
+    margin: 10px;
 }

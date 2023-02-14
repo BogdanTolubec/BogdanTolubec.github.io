@@ -1,7 +1,7 @@
 body {
     background: rgb(214, 213, 213);
 }
-.wrapper{
+.admin_page_wrapper{
     height: 590px;
     width: 100%;
     display: flex;

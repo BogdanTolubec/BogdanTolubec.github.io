@@ -13,7 +13,7 @@ const AdminPage = () => {
     const [activeDeleteEventModal, setDeleteEventModalActive] = useState(false)
 
     return(
-        <div className='wrapper'>
+        <div className='admin_page_wrapper'>
             <button className="closing-button" type = 'submit' onClick = {() => {
             setCreateProjectModalActive(true)}}>
                     Create project

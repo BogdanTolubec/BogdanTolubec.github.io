@@ -53,11 +53,11 @@ const CreateNewProjectPage = observer(() => {
             </div>
 
             <div className = "control_buttons_user">
-                <button type="submit" onClick = { () => {
+                <button className = "user_control_button" type="submit" onClick = { () => {
                     set_create_project_modal_active(true)}
                     }> Create project </button>
 
-                <button type="submit" onClick = { () => {
+                <button className = "user_control_button" type="submit" onClick = { () => {
                     set_create_event_modal_active(true)}
                     }> Create event </button>
             </div>

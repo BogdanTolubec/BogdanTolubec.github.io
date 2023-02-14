@@ -1,3 +1,5 @@
 .calculator_page_wrapper{
     height: 600px;
+    display: flex;
+    flex-direction: column;
 }
