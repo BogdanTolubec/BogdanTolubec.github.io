@@ -2,6 +2,7 @@ import{ makeAutoObservable } from 'mobx'
 
 export default class projectStore {
         constructor() {
+            
         this._projectEvents = []
         this._projects = []
 
