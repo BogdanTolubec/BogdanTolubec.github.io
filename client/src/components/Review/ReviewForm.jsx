@@ -6,6 +6,7 @@ import "../Main/Main.css"
 import Project_box from '../Main/ProjectBoxes/Project_box'
 import Project_box_pop_up from '../Main/ProjectBoxPopUp/ProjectBoxPopUp'
 import { fetchProjects, updateReviewStatusOnProject } from '../../http/projectApi'
+import ProjectBoxesArray from '../Main/ProjectBoxesArray/ProjectBoxesArray'
 
 const ReviewForm = observer(() => {
     const [Project_box_modal_active, set_Project_box_modal_active] = useState(false)
@@ -22,16 +23,7 @@ const ReviewForm = observer(() => {
         <main className='main'>
             <div className='projects_wrapper'>
 
-                {   
-                    project.projects.map( (projectIterate) => 
-                    <Project_box key = {projectIterate.id} img_scr = {projectIterate.projectIcon}
-                    set_box_active = {project.setSelectedProject} selectedProject = {projectIterate} 
-                    set_Project_box_modal_active = {set_Project_box_modal_active} isWatchlist = {false}>
-
-                        {projectIterate.projectName}
-
-                    </Project_box>) //rendering all of our project boxes
-                }
+                <ProjectBoxesArray set_Project_box_modal_active = {set_Project_box_modal_active}/>
 
                 <Project_box_pop_up setActive={set_Project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {false}>
                     <div className = "wrapper">

@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { Context } from '../..'; 
 import { observer } from 'mobx-react-lite';
 import '../Main/Main.css'
-import Project_box from '../Main/ProjectBoxes/Project_box'; 
 import Project_box_pop_up from '../Main/ProjectBoxPopUp/ProjectBoxPopUp'; 
 import { useEffect } from 'react';
 import { fetchProjectsByUser } from '../../http/projectApi';
 import jwt_decode from 'jwt-decode'
+import ProjectBoxesArray from '../Main/ProjectBoxesArray/ProjectBoxesArray';
 
 const Watchlist = observer(() => {
     const [Project_box_modal_active, set_Project_box_modal_active] = useState(false)
@@ -24,14 +24,7 @@ const Watchlist = observer(() => {
         <main className='main'>
             <div className='projects_wrapper'>
 
-                {   project.projects.map( (projectIterate) => 
-                    <Project_box key = {projectIterate.id} img_scr = {projectIterate.projectIcon}
-                    set_box_active = {project.setSelectedProject} selectedProject = {projectIterate} set_Project_box_modal_active = {set_Project_box_modal_active}>
-
-                        {projectIterate.projectName}
-
-                    </Project_box>) //rendering all of our project boxes
-                }
+                <ProjectBoxesArray set_Project_box_modal_active = {set_Project_box_modal_active}/>
 
                 <Project_box_pop_up setActive={set_Project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {true}>
                     <div className = "wrapper">

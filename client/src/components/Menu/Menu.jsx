@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom'
 import { login, registration } from '../../http/userApi';
 import { useNavigate } from 'react-router-dom';
 import jwt_decode from 'jwt-decode'
+import Filter from '../Main/Filter/Filter';
 
 const Menu = observer(() => {
     const [Sign_up_modal_active, set_sign_up_modal_active] = useState(false)
@@ -50,6 +51,8 @@ const Menu = observer(() => {
     return(
         <div className='menuWrapper'>
             { user.isAuth ? (<ul className="menu-main">
+
+                <Filter/>
 
                 <li><Link to = {MAIN_PAGE_ROUTE}> Home </Link></li>
                 <li><Link to = {WATCHLIST_ROUTE}> Watchlist </Link></li>

@@ -5,10 +5,10 @@ import CreateProjectModal from "../components/Main/AdminModals/ProjectCreateModa
 import jwt_decode from "jwt-decode"
 import { Context } from "..";
 import { fetchProjects } from "../http/projectApi";
-import Project_box from "../components/Main/ProjectBoxes/Project_box";
 import Project_box_pop_up from "../components/Main/ProjectBoxPopUp/ProjectBoxPopUp";
 import CreateEventModal from "../components/Main/AdminModals/CreateEventModal";
 import "./PagesStyles/CreateProjectPageStyle.css"
+import ProjectBoxesArray from "../components/Main/ProjectBoxesArray/ProjectBoxesArray";
 
 const CreateNewProjectPage = observer(() => {
 
@@ -28,14 +28,7 @@ const CreateNewProjectPage = observer(() => {
     return(
         <div className = "main_div">
             <div className = "projects_wrapper">
-                {   project.projects.map( (projectIterate) => 
-                    <Project_box key = {projectIterate.id} img_scr = {projectIterate.projectIcon}
-                        set_box_active = {project.setSelectedProject} selectedProject = {projectIterate} set_Project_box_modal_active = {set_project_box_modal_active}>
-
-                        {projectIterate.projectName}
-
-                    </Project_box>) //rendering all of our project boxes
-                }
+                <ProjectBoxesArray set_Project_box_modal_active = {set_project_box_modal_active}/>
 
                 <Project_box_pop_up setActive={set_project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {false}>
                     <div className = "wrapper">
