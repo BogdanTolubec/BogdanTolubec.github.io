@@ -1,5 +1,8 @@
 .calcultor_wrapper{
     padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
 }
 
 .calcultor_inputs{

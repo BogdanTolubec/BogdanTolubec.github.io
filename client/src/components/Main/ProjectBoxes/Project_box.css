@@ -23,14 +23,15 @@
     transition: 2s;
 }
 
-img{
+.Project_box img{
     height: 70%;
     width: 100%;
     object-fit: contain;
 }
 
-p{
+.Project_box p{
     text-align: center;
+    text-transform: uppercase;
 }
 
 .reviewed{

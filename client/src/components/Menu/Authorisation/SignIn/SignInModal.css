@@ -9,13 +9,37 @@
     flex-direction: column;
 }
 
-p{
+.sign_in_modal_wrapper p{
     text-transform: uppercase;
     font-size: 25px;
 }
 
-input{
+.sign_in_modal_wrapper input{
     margin: 10px;
     border-style: solid;
-    padding: 5px;
+    padding: 13px;
+    background-color: white;
+    background-image: url('userIcon.png');
+    background-size: 2em;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    padding-bottom: 13px;
+}
+
+.sign_in_modal_wrapper input[type = password]{
+    margin: 10px;
+    border-style: solid;
+    padding: 13px;
+    background-color: white;
+    background-image: url('passwordIcon.png');
+    background-size: 2em;
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+    padding-bottom: 13px;
+}
+
+.sign_in_modal_wrapper input:focus {
+    border: 3px solid #555;
 }

@@ -3,7 +3,6 @@ import '../SignIn/SignInModal.css'
 import Pop_up_modal from '../PopUp'
 import { useState } from 'react'
 
-
 function Sign_in_modal({setActive, active, setSignIn}){
 
     const [email, setEmail] = useState('')
