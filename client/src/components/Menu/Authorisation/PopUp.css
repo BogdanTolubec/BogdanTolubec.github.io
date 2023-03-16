@@ -38,7 +38,7 @@
 }
 
 .Pop_up_modal_content.active img{
-    width: 50%;
+    width: auto;
     height: 220px;
     align-self: center;
 }

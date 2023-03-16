@@ -1,9 +1,9 @@
-.wrapper{
+.create_project_wrapper{
     display: flex;
     flex-direction: column;
 }
 
-input{
+.create_project_wrapper input{
     border-radius: 5px;
     margin: 5px;
     width: 90%;
@@ -29,7 +29,7 @@ button:hover {
     background-color: rgb(217, 248, 77);
 }
 
-select{
+.create_project_wrapper select{
     width: 50%;
     text-align: center;
 }

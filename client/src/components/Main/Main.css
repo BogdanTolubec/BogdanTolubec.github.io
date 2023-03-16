@@ -20,15 +20,11 @@
 }
 
 .project_name {
-    flex-direction: row;
-    align-content: space-between;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     font-size: 48px;
     font-family:'Courier New', Courier, monospace;
     height: 300px;
     width: 100%;
-}
-
-.project_name img{
-    position: relative;
-    
 }

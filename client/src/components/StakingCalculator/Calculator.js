@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useContext, useEffect } from "react";
 import { Context } from "../..";
 import { fetchProjects } from "../../http/projectApi";
-import "./Calculator.css"
+import '../StakingCalculator/Calculator.css'
 
 const Calculator = observer(() => {
 

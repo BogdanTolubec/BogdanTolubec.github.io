@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Sign_up_modal from './Authorisation/SignUp/SignUpModal'
-import Sign_in_modal from './Authorisation/SignIn/SignInModal';
+import Sign_up_modal from './Authorisation/AuthorisationModals/SignUpModal'
+import Sign_in_modal from './Authorisation/AuthorisationModals/SignInModal';
 import { Context } from '../../index'
 import { observer } from 'mobx-react-lite'
 import './Menu.css'

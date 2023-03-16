@@ -68,7 +68,7 @@ const CreateProjectModal = observer(({active, setActive}) => {
 
     return(
         <Pop_up_modal active = {active} setActive = {setActive}>
-            <div className = 'wrapper'>
+            <div className = 'create_project_wrapper'>
                 <label> Project icon(url-path): </label>
                 <input className = 'project_inputs' onChange = {(e) => {setIcon(e.target.value)}} placeholder = 'niceimage/img.jpg'></input>
 
