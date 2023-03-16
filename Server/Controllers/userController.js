@@ -59,6 +59,22 @@ class userController {
         const newToken = generateJwt(req.user.id, req.user.email, req.user.role)
         return res.json({newToken})
     }
+
+    async updateUserRole(req, res, next){
+        const {userEmail, newUserRole} = req.body
+
+        if(newUserRole !== 'REVIEWER' && newUserRole !== 'USER'){
+            return next(ApiErrors.badRequest("User role can be changed only on 'USER' or 'REVIEWER'"))
+        }
+
+        const user = await User.update({role: newUserRole}, {where:{email: userEmail}})
+
+        if(user == 0){
+            return next(ApiErrors.badRequest("User doesn't exists"))
+        }
+
+        return res.json(user)
+    }
 }
 
 module.exports = new userController()

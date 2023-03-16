@@ -11,7 +11,7 @@ const Filter = observer(() => {
         <div className = 'filter'>
         <img src = 'https://cdn-icons-png.flaticon.com/512/107/107799.png'></img>
 
-        <select className = "Filter" onChange={e => {filter.setState(e.target.value); console.log("Filter: " + filter.state); /*window.location.reload()*/}}>
+        <select className = "Filter" onChange={e => {filter.setState(e.target.value)}}>
             <option value = {"all"}>all</option>
             <option value = {"education"}>education</option>
             <option value = {"farming system"}>farming system</option>

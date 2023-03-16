@@ -4,6 +4,7 @@ import DeleteEventModal from '../components/Main/AdminModals/deleteEvent';
 import CreateProjectModal from '../components/Main/AdminModals/ProjectCreateModal';
 import DeleteProjectModal from '../components/Main/AdminModals/deleteProject';
 import './PagesStyles/AdminPageStyle.css'
+import UpdateUserRoleModal from '../components/Main/AdminModals/ChangeUserRoleModal/ChangeUserRoleModal';
 
 const AdminPage = () => {
     const [activeCreateProjectModal, setCreateProjectModalActive] = useState(false)
@@ -12,8 +13,10 @@ const AdminPage = () => {
     const [activeCreateEventModal, setCreateEventModalActive] = useState(false)
     const [activeDeleteEventModal, setDeleteEventModalActive] = useState(false)
 
+    const [activeUpdateUserRoleModal, setUserRoleModalActive] = useState(false)
+
     return(
-        <div className='admin_page_wrapper'>
+        <div className ='admin_page_wrapper'>
             <button className="closing-button" type = 'submit' onClick = {() => {
             setCreateProjectModalActive(true)}}>
                     Create project
@@ -34,11 +37,19 @@ const AdminPage = () => {
                     Delete event
             </button>
 
+            <button className="closing-button" type = 'submit' onClick = {() => {
+            setUserRoleModalActive(true)}}>
+                    Update user role
+            </button>
+
             <CreateProjectModal active = {activeCreateProjectModal} setActive = {setCreateProjectModalActive} />
             <DeleteProjectModal active = {activeDeleteProjectModal} setActive = {setDeleteProjectModalActive}/>
 
             <CreateEventModal active = {activeCreateEventModal} setActive = {setCreateEventModalActive} />
             <DeleteEventModal active = {activeDeleteEventModal} setActive = {setDeleteEventModalActive}/>
+
+            <UpdateUserRoleModal active = {activeUpdateUserRoleModal} setActive = {setUserRoleModalActive}></UpdateUserRoleModal>
+
         </div>
     )
 }

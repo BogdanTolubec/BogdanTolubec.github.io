@@ -24,3 +24,16 @@ export const auth = async () => {
 
     return jwt_decode(data.newToken) //after recconecting user got a new jwt
 }
+
+export const updateUserRole = async ({userEmail, newUserRole}) => {
+
+    try{
+    const {data} = await $authHost.post('/api/user/updateUserRole', {userEmail, newUserRole})
+
+    return data
+    }
+
+    catch(e){
+        alert("An error occured: " + e.message);
+    }
+}

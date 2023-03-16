@@ -36,3 +36,9 @@
     transform: scale(1);
     flex-direction: column;
 }
+
+.Pop_up_modal_content.active img{
+    width: 50%;
+    height: 220px;
+    align-self: center;
+}

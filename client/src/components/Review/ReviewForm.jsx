@@ -3,7 +3,6 @@ import { useContext, useState, useEffect } from 'react'
 import { observer } from 'mobx-react-lite'
 import { Context } from '../..'
 import "../Main/Main.css"
-import Project_box from '../Main/ProjectBoxes/Project_box'
 import Project_box_pop_up from '../Main/ProjectBoxPopUp/ProjectBoxPopUp'
 import { fetchProjects, updateReviewStatusOnProject } from '../../http/projectApi'
 import ProjectBoxesArray from '../Main/ProjectBoxesArray/ProjectBoxesArray'
