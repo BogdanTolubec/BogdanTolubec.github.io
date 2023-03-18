@@ -2,7 +2,7 @@ import { observer } from 'mobx-react-lite';
 import react, {useState} from 'react'
 import { useContext } from 'react';
 import { Context } from '../../..';
-import { createProjectEvent, fetchEventCalendar, fetchProjectByName, fetchUpdateProject } from '../../../http/projectApi';
+import { createProjectEvent} from '../../../http/projectApi';
 import Pop_up_modal from '../../Menu/Authorisation/PopUp';
 import { inputsClear } from './clearFunction';
 import './CreateEventModal.css'
@@ -79,17 +79,16 @@ const CreateEventModal = observer(({active, setActive}) => {
             <div className = 'wrapper'>
 
                 <label> Project name: </label>
-                <input className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'></input>
+                <input type = {"text"} className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'/>
 
                 <label> eventDate: </label>
-                <input className='inputs' type = 'date' onChange = {(e) => {setEventDate(e.target.value)}} placeholder = {todayDate}></input>
+                <input type = 'date' className='inputs' onChange = {(e) => {setEventDate(e.target.value)}} placeholder = {todayDate}/>
 
                 <label> Tokens per event: </label>
-                <input className='inputs' onChange = {(e) => {setTokensPerEvent(e.target.value)}} placeholder = '100'></input>
+                <input type = {'number'} className='inputs' min = {1} onChange = {(e) => {setTokensPerEvent(e.target.value)}} placeholder = '100'/>
 
                 <label> Money supply(for event): </label>
-                <input className='inputs' onChange = {(e) => {setMoneySupply(e.target.value)}} placeholder = '1000'></input>
-
+                <input type = {"number"} className='inputs' min = {0.01} onChange = {(e) => {setMoneySupply(e.target.value)}} placeholder = '1000'/>
 
                 <button id = 'add' onClick={() => {addProjectEvent()}}> Create event </button>
             </div>

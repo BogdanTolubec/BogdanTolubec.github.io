@@ -30,6 +30,8 @@ const Project = sequelize.define('project', {
     predictMoneySupply: {type: DataTypes.INTEGER, allowNull: false},
     keywords: {type: DataTypes.STRING, allowNull: false},
     reviewed: {type: DataTypes.BOOLEAN, defaultValue: 0},
+    stakingPercent: {type: DataTypes.FLOAT, defaultValue: 0},
+    
     //presentation: {type: DataTypes.}
 })
 

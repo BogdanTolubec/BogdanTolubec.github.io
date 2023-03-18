@@ -16,13 +16,13 @@ function Sign_up_modal({setActive, active, setSignUp}){
                 <label>Email</label>
 
                 <div className = 'text-field__icon text-field__icon_email'>
-                    <input placeholder='John228@gmail.com' value = {email} onChange = {(e) => {setEmail(e.target.value)}}></input>
+                    <input type = {"email"} placeholder='John228@gmail.com' value = {email} onChange = {(e) => {setEmail(e.target.value)}}/>
                 </div>
 
                 <label>Password</label>
 
                 <div className = 'text-field__icon text-field__icon_password'>
-                    <input type = "password" placeholder='********' value = {password} onChange = {(e) => {setPassword(e.target.value)} }></input>
+                    <input type = "password" placeholder='********' value = {password} onChange = {(e) => {setPassword(e.target.value)} }/>
                 </div>
                 
                 <a hfer = '/'> I want to be a reviewer!  </a>

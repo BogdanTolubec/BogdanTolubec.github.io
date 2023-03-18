@@ -6,6 +6,7 @@
   text-align: center;
   background: white;
 }
+
 .menu-main li {display: inline-block;}
 .menu-main li:after {
   content: "|";
@@ -13,6 +14,7 @@
   display: inline-block;
   vertical-align:top;
 }
+
 .menu-main li:last-child:after {content: none;}
 .menu-main a {
   text-decoration: none;
@@ -26,6 +28,7 @@
   display: inline-block;
   transition: color .2s;
 }
+
 .menu-main a, .menu-main a:visited {color: #9d999d;}
 .menu-main a.current, .menu-main a:hover{color: #feb386;}
 .menu-main a:before,
@@ -40,6 +43,7 @@
   background: #feb386;
   transition: .8s;
 }
+
 .menu-main a:hover:before, .menu-main .current:before {left: 0;}
 .menu-main a:hover:after, .menu-main .current:after {right: 0;}   
 @media (max-width: 550px) {

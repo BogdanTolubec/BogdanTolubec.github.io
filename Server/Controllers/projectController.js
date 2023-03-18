@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken')
 class projectController {
     async create(req, res, next){
         try{
-            const {projectIcon, projectName, description, tokenPrice, fullTokenSupply,  publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, userId} = req.body
-            const project = await Project.create({projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, userId})
+            const {projectIcon, projectName, description, tokenPrice, fullTokenSupply,  publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, userId, stakingPercent} = req.body
+            const project = await Project.create({projectIcon, projectName, description, tokenPrice, fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, stakingPercent,userId})
             const calendar = await EventCalendar.create({projectId: project.id})
 
             return res.json(project)

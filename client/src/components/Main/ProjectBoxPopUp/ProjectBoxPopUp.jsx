@@ -100,7 +100,7 @@ const Project_box_pop_up = observer(({active, setActive, isWatchlist, children})
                 {children}
                 <p>Project last event: {lastDate !== undefined ? lastDate.substring(4,15) : "Loading..."}</p>
                 <p>Project next event: {nextDate !== undefined ? nextDate.substring(4,15) : "Loading..."}</p>
-                <p>Price: {price}</p>
+                <p>Price: {project.selectedProject.tokenPrice}</p>
 
                 {
                     isWatchlist ? <button onClick = {() => {deleteFromWatchlist()}}> Delete from watchlist </button> :

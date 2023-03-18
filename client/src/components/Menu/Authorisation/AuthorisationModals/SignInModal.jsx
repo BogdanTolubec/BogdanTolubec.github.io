@@ -16,13 +16,13 @@ function Sign_in_modal({setActive, active, setSignIn}){
                     <label>Email</label>
 
                     <div className = 'text-field__icon text-field__icon_email'>
-                        <input placeholder='John1990@gmail.com' value = {email} onChange = {(e) => {setEmail(e.target.value)}}></input>
+                        <input type = {"email"} placeholder='John1990@gmail.com' value = {email} onChange = {(e) => {setEmail(e.target.value)}}/>
                     </div>
 
                     <label>Password</label>
 
                     <div className = 'text-field__icon text-field__icon_password'>
-                        <input type = 'password' placeholder = '*****' value = {password} onChange = {(e) => {setPassword(e.target.value)}}></input>
+                        <input type = 'password' placeholder = '*****' value = {password} onChange = {(e) => {setPassword(e.target.value)}}/>
                     </div>
                     <button  onClick={() => {setSignIn(email, password)}}> Sign In </button>
                 </div>

@@ -2,7 +2,16 @@
     padding: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: baseline;
+    justify-content: flex-start;
+    color: rgb(0, 0, 0);
+    font-weight: 1000;
+    font-size: 18px;
+}
+
+.calculator_wrapper select{
+    font-size: 15px;
+    width: 20%;
+    padding: 5px;
 }
 
 .calculator_wrapper label{
@@ -10,9 +19,11 @@
 }
 
 .calculator_inputs{
-    display: flex;
-    flex-direction: column;
-    justify-content: baseline;
+    display: grid;
+    grid-template-columns: 400px 400px 400px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
 }
 
 .calculator_inputs input{
@@ -30,4 +41,25 @@
     border: 1px solid #bdbdbd;
     border-radius: 0.25rem;
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.calculator_lables{
+    display: grid;
+    grid-template-columns: 400px 400px 400px ;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.money_amount_input{
+    margin-top: 10px;
+    padding: 10px;
+    width: 60%;
+    align-self: center;
+    text-align: center;
+}
+
+.money_amount_lable{
+    margin-top: 40px;
+    align-self: center;
 }

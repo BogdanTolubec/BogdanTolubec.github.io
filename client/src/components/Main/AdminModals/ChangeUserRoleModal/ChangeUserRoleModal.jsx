@@ -46,7 +46,7 @@ const UpdateUserRoleModal = observer(({active, setActive}) => {
             <div className = 'wrapper'>
 
                 <label> User email: </label>
-                <input className='inputs' onChange = {(e) => {setUserEmail(e.target.value)}} placeholder = 'Dmytro2010@gmail.com'></input>
+                <input type = {"email"} className='inputs' onChange = {(e) => {setUserEmail(e.target.value)}} placeholder = 'Dmytro2010@gmail.com'/>
 
                 <label> New user role: </label>
 

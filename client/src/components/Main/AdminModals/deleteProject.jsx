@@ -32,7 +32,7 @@ const DeleteProjectModal = observer(({active, setActive}) => {
             <div className = 'wrapper'>
 
                 <label> Project name: </label>
-                <input className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'></input>
+                <input type = {"text"} className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'/>
 
                 <button id = 'add' onClick={() => {deleteProjectOnButtonClick()}}> Delete project </button>
             </div>

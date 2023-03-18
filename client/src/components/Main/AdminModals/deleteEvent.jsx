@@ -44,10 +44,10 @@ const DeleteEventModal = observer(({active, setActive}) => {
             <div className = 'wrapper'>
 
                 <label> Project name: </label>
-                <input className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'></input>
+                <input type = {"text"} className='inputs' onChange = {(e) => {setProjectName(e.target.value)}} placeholder = 'Bitcoin'/>
 
                 <label> eventDate: </label>
-                <input className='inputs' type = 'date' onChange = {(e) => {setEventDate(e.target.value)}} placeholder = {"2022-01-01"}></input>
+                <input className='inputs' type = 'date' onChange = {(e) => {setEventDate(e.target.value)}} placeholder = {"2022-01-01"}/>
 
                 <button id = 'add' onClick={() => {deleteEvent()}}> Delete event </button>
             </div>
