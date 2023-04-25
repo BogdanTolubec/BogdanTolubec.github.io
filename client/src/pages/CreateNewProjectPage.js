@@ -22,7 +22,8 @@ const CreateNewProjectPage = observer(() => {
         fetchProjects().then(data => {
             data = data.filter(element => element.userId === jwt_decode(localStorage.getItem('token')).id)
             project.setProjects(data) //loading data about all projects after page loading
-        })
+            project.setSelectedProject(data[0])
+            })
     }, [])
 
     return(

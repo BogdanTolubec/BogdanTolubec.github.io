@@ -11,7 +11,8 @@ const Project_box = ({set_Project_box_modal_active, set_box_active, selectedProj
 
                 <img src = {img_scr} alt="NO IMG!" title="icon" />
 
-                {selectedProject.reviewed === false ? <p className = 'not_reviewed'>Not reviewed yet</p> : <p className = 'reviewed'>Reviewed</p>}
+                {selectedProject.reviewed === false ? <p className = 'not_reviewed'>Not reviewed yet</p> 
+                : <p className = 'reviewed'>Reviewed</p>}
 
                 <p>{children}</p>
 

@@ -1,7 +1,6 @@
 import { observer } from 'mobx-react-lite'
 import React, { useContext, useEffect } from 'react'
 import { Context } from '../../..'
-import { fetchProjects } from '../../../http/projectApi'
 import Project_box from '../ProjectBoxes/Project_box'
 
 const ProjectBoxesArray = observer(({set_Project_box_modal_active}) => {

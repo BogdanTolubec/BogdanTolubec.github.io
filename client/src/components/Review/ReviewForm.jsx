@@ -27,15 +27,15 @@ const ReviewForm = observer(() => {
                 <Project_box_pop_up setActive={set_Project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {false}>
                     <div className = "wrapper">
                         <div className='project_name'>
-                            {project.selectedProject.projectName}
-                            <img src = {project.selectedProject.projectIcon} alt = "no img"></img>
+                            {project?.selectedProject?.projectName}
+                            <img src = {project?.selectedProject?.projectIcon} alt = "no img"></img>
                         </div>
 
                         <div>
-                            {project.selectedProject.description}
+                            {project?.selectedProject?.description}
 
                             <button onClick = {() => {
-                                const info = {id: project.selectedProject.id, status: 1}
+                                const info = {id: project?.selectedProject?.id, status: 1}
 
                                 updateReviewStatusOnProject(info).
                                 then(window.location.reload())}}> Verify </button>

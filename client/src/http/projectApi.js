@@ -8,6 +8,8 @@ import { $host, $authHost } from "./index";
 export const createProject = async (project) => {
     const {data} = await $authHost.post('/api/project', project)
 
+    console.log(JSON.stringify(data))
+
     return data
 }
 

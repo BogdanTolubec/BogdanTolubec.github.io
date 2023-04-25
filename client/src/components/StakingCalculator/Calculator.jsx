@@ -28,14 +28,18 @@ const Calculator = observer(() => {
 
     useEffect (() => {
         setIncome(calculateIncome())
-        console.log("Project name: " + projectName + " money amount: " + money_amount + " fees: " + fees + " token price: " + tokenPrice + " days of staking: " + daysOfStaking + " Income: " + income + " selected project.stakingPercent = " + JSON.stringify(project.selectedProject))
     },[money_amount, fees, tokenPrice, daysOfStaking, projectName, income, project.selectedProject])
 
-    function calculateIncome(){
-    let result = (daysOfStaking/365) * (money_amount * stakingPercent - money_amount*fees)
-    let priceDeltaPercent = (project.selectedProject.tokenPrice - tokenPrice) / tokenPrice
+    useEffect (() => {
+        project.setSelectedProject(project.projects.filter(project => project.projectName === document.getElementById("calculator_project_select").value)[0])
+    },[money_amount, fees, tokenPrice, daysOfStaking, projectName, income])
 
-    return  (tokenPrice === project.selectedProject.tokenPrice) ? (result): (result - (result * priceDeltaPercent))
+    function calculateIncome(){
+    let tokensCount = money_amount / project?.selectedProject?.tokenPrice
+
+    tokensCount = (daysOfStaking/365) * (tokensCount * (stakingPercent - (stakingPercent * fees)))
+
+    return  tokensCount * tokenPrice
     }
 
 
@@ -78,7 +82,7 @@ const Calculator = observer(() => {
             <input type = {"number"} min = {0} className = "money_amount_input" placeholder = "10000$" onChange = {(e) => {setMoneyAmount(e.target.value)}}/>
 
             <div defaultValue = {0} className = "calculator_outputs">
-                <output> Income: {isNaN(income) ? 0 : income}$ </output>
+                <output> Income: {isNaN(income) ? 0 : income.toFixed(2)}$ </output>
             </div>
 
         </div>

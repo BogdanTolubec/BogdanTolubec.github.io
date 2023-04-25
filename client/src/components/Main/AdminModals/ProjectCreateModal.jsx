@@ -21,7 +21,7 @@ const CreateProjectModal = observer(({active, setActive}) => {
     const [icon, setIcon] = useState('https://st4.depositphotos.com/10376142/27856/v/600/depositphotos_278561428-stock-illustration-black-blockchain-technology-icon-isolated.jpg')
     const [name, setName] = useState()
     const [description, setDescription] = useState()
-    const [price, setPrice] = useState()
+    const [tokenPrice, setTokenPrice] = useState()
     const [fullTokenSupply, setFullTokenSupply] = useState()
     const [publicVesting, setPublicVesting] = useState()
     const [projectStage, setProjectStage] = useState('Close')
@@ -29,29 +29,33 @@ const CreateProjectModal = observer(({active, setActive}) => {
     const [predictMoneySupply, setPredictMoneySupply] = useState()
     const [keywords, setKeyWords] = useState()
     const [stakingPercent, setStakingPercent] = useState()
+    const [presentation, setPresentation] = useState()
+    const userId = (jwt_decode(localStorage.getItem('token')).id)
 
     const addProject = () => {
 
         try{
 
-        let formData = {projectIcon: icon,
-        projectName: name,
-        description: description,
-        tokenPrice: price,
-        fullTokenSupply: fullTokenSupply,
-        publicVesting: publicVesting.toLocaleString('ru-RU').replace('.', '-s'),
-        projectStage: projectStage,
-        realMoneySupply: realMoneySupply,
-        predictMoneySupply: predictMoneySupply,
-        keywords: keywords,
-        userId: (jwt_decode(localStorage.getItem('token')).id),
-        stakingPercent: stakingPercent}
+        let formData = new FormData
+        formData.append("icon",icon)
+        formData.append("name",name)
+        formData.append("description",description)
+        formData.append("tokenPrice",tokenPrice)
+        formData.append("fullTokenSupply",fullTokenSupply)
+        formData.append("publicVesting",publicVesting.toLocaleString('ru-RU').replace('.', '-s'))
+        formData.append("projectStage",projectStage)
+        formData.append("realMoneySupply",realMoneySupply)
+        formData.append("predictMoneySupply",predictMoneySupply)
+        formData.append("keywords",keywords)
+        formData.append("userId",userId)
+        formData.append("stakingPercent",stakingPercent)
+        formData.append("presentation",presentation)
 
         createProject(formData).then(alert("Success")).then(() => {
             setIcon('')
             setName('')
             setDescription('')
-            setPrice('')
+            setTokenPrice('')
             setFullTokenSupply('')
             setPublicVesting('')
             setProjectStage('')
@@ -81,8 +85,8 @@ const CreateProjectModal = observer(({active, setActive}) => {
                 <label> Description (some words about project): </label>
                 <input type = {"text"} className = 'project_inputs' onChange = {(e) => {setDescription(e.target.value)}} placeholder = 'It`s a project for...'/>
 
-                <label> Token price: </label> {/*Shold be calculated later*/} 
-                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setPrice(Number(e.target.value))}} placeholder = '10'/>
+                <label> Token tokenPrice: </label> {/*Shold be calculated later*/} 
+                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setTokenPrice(Number(e.target.value))}} placeholder = '10'/>
 
                 <label> Full token supply: </label>
                 <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setFullTokenSupply(Number(e.target.value))}} placeholder = '10000'/>
@@ -102,6 +106,9 @@ const CreateProjectModal = observer(({active, setActive}) => {
 
                 <label> Predict on money supply: </label>
                 <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setPredictMoneySupply(Number(e.target.value))}} placeholder = '2000'/>
+
+                <label>Presentation</label>
+                <input type = "file" encType = "multipart/form-data" accept = '.pptx' name="filedata" onChange = { (e) => {setPresentation(e.target.files[0]); console.log(e.target.files[0])} }/>
 
                 <button type = 'submit' onClick={() => {addProject()}}> Create project </button>
             </div>

@@ -17,6 +17,7 @@ const Watchlist = observer(() => {
     useEffect ( () => {
         fetchProjectsByUser(jwt_decode(localStorage.getItem('token')).id).then(data => {
             project.setProjects(data) //loading data about all projects after page loading
+            project.setSelectedProject(data[0])
         })
     }, [])
 

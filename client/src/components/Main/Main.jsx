@@ -15,6 +15,7 @@ const Main = observer(() => {
                 data = data.filter(element => element.reviewed === true)
 
             project.setProjects(data) //loading data about all projects after page loading
+            project.setSelectedProject(data[0])
         })
     }, [])
 
