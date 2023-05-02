@@ -5,18 +5,26 @@ const jwt = require('jsonwebtoken')
 class projectController {
     async create(req, res, next){
         try{
+
+            if(req.file == undefined){
+                next(ApiError.badRequest("File not found"))
+            }
+
+            const presentation = req.file.path
+
             const {projectIcon, projectName, description, tokenPrice, fullTokenSupply,  publicVesting, projectStage,
-                 realMoneySupply, predictMoneySupply, keywords, userId, stakingPercent} = req.body
+                realMoneySupply, predictMoneySupply, keywords, userId, stakingPercent} = req.body       
 
             const project = await Project.create({projectIcon, projectName, description, tokenPrice, 
-                fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, stakingPercent,userId})
+                fullTokenSupply, publicVesting, projectStage, realMoneySupply, predictMoneySupply, keywords, stakingPercent,userId, presentation})
+
             const calendar = await EventCalendar.create({projectId: project.id})
 
             return res.json(project)
         } 
         
         catch(e){
-            next(ApiError.badRequest(e.message))
+            next(ApiError.badRequest(req.file.path))
         }
     }
 

@@ -31,8 +31,9 @@ const Project = sequelize.define('project', {
     keywords: {type: DataTypes.STRING, allowNull: false},
     reviewed: {type: DataTypes.BOOLEAN, defaultValue: 0},
     stakingPercent: {type: DataTypes.FLOAT, defaultValue: 0},
-    
-    //presentation: {type: DataTypes.}
+    presentation: {type: DataTypes.STRING, allowNull: true},
+    whitePaper: {type: DataTypes.STRING, allowNull: true},
+    tokenomicPaper: {type: DataTypes.STRING, allowNull: true}
 })
 
 const EventCalendar = sequelize.define('event_calendar', {

@@ -1,16 +1,16 @@
 require('dotenv').config()
 const express = require('express')
-const multer  = require("multer");
 const cors = require('cors');
 const sequelize = require('./dbConnector')
 const models = require('./models/models')
 const router = require('./Routers/index')
 const errorHandlingMiddleware = require('./middleware/errorHandlingMiddleware')
+const path = require('path')
 
 const app = express()
 
 app.use(express.static(__dirname));
-app.use(multer({dest:"client/public/uploads"}).single("filedata"));
+app.use('/uploads', express.static(path.join(__dirname, "uploads")))
 
 var corsOptions = {
 	origin: "http://localhost:3000",

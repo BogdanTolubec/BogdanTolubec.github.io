@@ -1,14 +1,15 @@
 import { $host, $authHost } from "./index";
 
-//fetches - for asking server
+//fetches - for requesting server
 //create - add something into DB
 //delete - delete object and related to object objects
 //$host - every user have access $authHost - only for authorisated users
 
 export const createProject = async (project) => {
-    const {data} = await $authHost.post('/api/project', project)
 
-    console.log(JSON.stringify(data))
+    const {data} = await $authHost.post('/api/project', project, {"content-type": false})
+
+    console.log("Data" + JSON.stringify(data))
 
     return data
 }

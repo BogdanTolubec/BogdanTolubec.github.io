@@ -6,6 +6,19 @@ import '../StakingCalculator/Calculator.css'
 
 const Calculator = observer(() => {
 
+    useEffect (() => {
+        fetchProjects().then(data => {
+            data = data.filter(element => element.reviewed === true)
+            data = data.filter(element => element.stakingPercent !== 0)
+
+            if(data.length !== 0){
+            project.setProjects(data) //loading data about all projects after page loading
+
+            project.setSelectedProject(data[0])
+            }
+        })
+    }, [])
+
     const {project} = useContext(Context)
 
     const [projectName, setProjectName] = useState(document.getElementById("calculator_project_select")?.value)
@@ -13,18 +26,8 @@ const Calculator = observer(() => {
     const [fees, setFees] = useState(0.01)
     const [tokenPrice, setTokenPrice] = useState(project.selectedProject?.tokenPrice)
     const [money_amount, setMoneyAmount] = useState(10000)
-    const [income, setIncome] = useState(0)
-    const [stakingPercent, setStakingPercent] = useState(0)
-
-    useLayoutEffect (() => {
-        fetchProjects().then(data => {
-            data = data.filter(element => element.reviewed === true)
-            data = data.filter(element => element.stakingPercent !== 0)
-            project.setProjects(data) //loading data about all projects after page loading
-
-            project.setSelectedProject(data[0])
-        })
-    }, [])
+    const [stakingPercent, setStakingPercent] = useState(project.selectedProject?.stakingPercent)
+    const [income, setIncome] = useState(calculateIncome())
 
     useEffect (() => {
         setIncome(calculateIncome())

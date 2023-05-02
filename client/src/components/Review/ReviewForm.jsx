@@ -10,11 +10,14 @@ import ProjectBoxesArray from '../Main/ProjectBoxesArray/ProjectBoxesArray'
 const ReviewForm = observer(() => {
     const [Project_box_modal_active, set_Project_box_modal_active] = useState(false)
     const {project} = useContext(Context)
+    let isListOfProjectEmpty = true
 
     useEffect ( () => {
         fetchProjects().then(data => {
+            if(data.length !== 0){
                 data = data.filter(element => element.reviewed === false)
                 project.setProjects(data) //loading data about all projects after page loading
+            }
         })
     }, [])
 
@@ -22,27 +25,29 @@ const ReviewForm = observer(() => {
         <main className='main'>
             <div className='projects_wrapper'>
 
-                <ProjectBoxesArray set_Project_box_modal_active = {set_Project_box_modal_active}/>
+            {!isListOfProjectEmpty ? (
 
-                <Project_box_pop_up setActive={set_Project_box_modal_active} active = {Project_box_modal_active} isWatchlist = {false}>
-                    <div className = "wrapper">
-                        <div className='project_name'>
-                            {project?.selectedProject?.projectName}
-                            <img src = {project?.selectedProject?.projectIcon} alt = "no img"></img>
+                <><ProjectBoxesArray set_Project_box_modal_active={set_Project_box_modal_active} /><Project_box_pop_up setActive={set_Project_box_modal_active} active={Project_box_modal_active} isWatchlist={false}>
+                        <div className="wrapper">
+                            <div className='project_name'>
+                                {project?.selectedProject?.projectName}
+                                <img src={project?.selectedProject?.projectIcon} alt="no img"></img>
+                            </div>
+
+                            <div>
+                                {project?.selectedProject?.description}
+
+                                <button onClick={() => {
+                                    const info = { id: project?.selectedProject?.id, status: 1 }
+
+                                    updateReviewStatusOnProject(info).
+                                        then(window.location.reload())
+                                } }> Verify </button>
+                            </div>
                         </div>
 
-                        <div>
-                            {project?.selectedProject?.description}
-
-                            <button onClick = {() => {
-                                const info = {id: project?.selectedProject?.id, status: 1}
-
-                                updateReviewStatusOnProject(info).
-                                then(window.location.reload())}}> Verify </button>
-                        </div>
-                    </div>
-
-                </Project_box_pop_up>{/*project box popup from all project info*/}
+                    </Project_box_pop_up></>) :
+                    <div></div>}
             </div>
         </main>
     );

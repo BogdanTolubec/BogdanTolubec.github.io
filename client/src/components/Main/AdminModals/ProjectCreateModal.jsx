@@ -1,7 +1,5 @@
 import { observer } from 'mobx-react-lite';
 import react, {useState} from 'react'
-import { useContext } from 'react';
-import { Context } from '../../..';
 import { createProject } from '../../../http/projectApi';
 import Pop_up_modal from '../../Menu/Authorisation/PopUp';
 import { inputsClear } from './clearFunction';
@@ -14,9 +12,6 @@ const CreateProjectModal = observer(({active, setActive}) => {
 
     let todayDate = new Date()
     todayDate =  todayDate.getFullYear() + "-" + todayDate.getMonth() + "-" + todayDate.getDate()
-
-    const {project} = useContext(Context)
-    const {user} = useContext(Context)
 
     const [icon, setIcon] = useState('https://st4.depositphotos.com/10376142/27856/v/600/depositphotos_278561428-stock-illustration-black-blockchain-technology-icon-isolated.jpg')
     const [name, setName] = useState()
@@ -36,9 +31,9 @@ const CreateProjectModal = observer(({active, setActive}) => {
 
         try{
 
-        let formData = new FormData
-        formData.append("icon",icon)
-        formData.append("name",name)
+        const formData = new FormData()
+        formData.append("projectIcon",icon)
+        formData.append("projectName",name)
         formData.append("description",description)
         formData.append("tokenPrice",tokenPrice)
         formData.append("fullTokenSupply",fullTokenSupply)
@@ -50,6 +45,8 @@ const CreateProjectModal = observer(({active, setActive}) => {
         formData.append("userId",userId)
         formData.append("stakingPercent",stakingPercent)
         formData.append("presentation",presentation)
+
+        console.log("File: " + JSON.stringify(presentation))
 
         createProject(formData).then(alert("Success")).then(() => {
             setIcon('')
@@ -108,7 +105,7 @@ const CreateProjectModal = observer(({active, setActive}) => {
                 <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setPredictMoneySupply(Number(e.target.value))}} placeholder = '2000'/>
 
                 <label>Presentation</label>
-                <input type = "file" encType = "multipart/form-data" accept = '.pptx' name="filedata" onChange = { (e) => {setPresentation(e.target.files[0]); console.log(e.target.files[0])} }/>
+                <input type = "file" en accept = '.pptx' name = "presentation" onChange = { (e) => {setPresentation(e.target.files[0]); console.log(e.target.files[0])} }/>
 
                 <button type = 'submit' onClick={() => {addProject()}}> Create project </button>
             </div>

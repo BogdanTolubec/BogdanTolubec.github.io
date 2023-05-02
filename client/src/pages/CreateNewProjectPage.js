@@ -15,19 +15,33 @@ const CreateNewProjectPage = observer(() => {
     const [Project_box_modal_active, set_project_box_modal_active] = useState(false)
     const [Create_event_modal_active, set_create_event_modal_active] = useState(false)
     const [ActiveCreateProjectModal, set_create_project_modal_active] = useState(false)
+    const [isListOfProjectEmpty, setIsListOfProjectEmpty] = useState(true)
 
     const {project} = useContext(Context)
 
     useEffect ( () => {
         fetchProjects().then(data => {
+            
             data = data.filter(element => element.userId === jwt_decode(localStorage.getItem('token')).id)
-            project.setProjects(data) //loading data about all projects after page loading
-            project.setSelectedProject(data[0])
+            
+            if(data.length !== 0)
+            {
+                project.setProjects(data) //loading data about all projects after page loading
+                project.setSelectedProject(data[0])
+                setIsListOfProjectEmpty(false)
+            }
+
+            else{
+                setIsListOfProjectEmpty(true)
+            }
             })
     }, [])
 
     return(
         <div className = "main_div">
+
+        {isListOfProjectEmpty === false ? (
+
             <div className = "projects_wrapper">
                 <ProjectBoxesArray set_Project_box_modal_active = {set_project_box_modal_active}/>
 
@@ -44,7 +58,8 @@ const CreateNewProjectPage = observer(() => {
                     </div>
 
                 </Project_box_pop_up>
-            </div>
+            </div>) : 
+            (<div>It's empty here!</div>)}
 
             <div className = "control_buttons_user">
                 <button className = "user_control_button" type="submit" onClick = { () => {
