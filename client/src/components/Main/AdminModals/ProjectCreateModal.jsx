@@ -22,7 +22,7 @@ const CreateProjectModal = observer(({active, setActive}) => {
     const [projectStage, setProjectStage] = useState('Close')
     const [realMoneySupply, setRealMoneySupply] = useState()
     const [predictMoneySupply, setPredictMoneySupply] = useState()
-    const [keywords, setKeyWords] = useState()
+    const [keywords, setKeyWords] = useState("education")
     const [stakingPercent, setStakingPercent] = useState()
     const [presentation, setPresentation] = useState()
     const userId = (jwt_decode(localStorage.getItem('token')).id)
@@ -74,38 +74,52 @@ const CreateProjectModal = observer(({active, setActive}) => {
         <Pop_up_modal active = {active} setActive = {setActive}>
             <div className = 'create_project_wrapper'>
                 <label> Project icon(url-path): </label>
-                <input type = {"url"} className = 'project_inputs' onChange = {(e) => {setIcon(e.target.value)}} placeholder = 'niceimage/img.jpg'/>
+                <input type = {"url"} className = 'project_inputs' 
+                onChange = {(e) => {setIcon(e.target.value)}} placeholder = 'niceimage/img.jpg'/>
 
                 <label> Project name(255 symbols max): </label>
-                <input type = {"text"} className = 'project_inputs' onChange = {(e) => {setName(e.target.value)}} placeholder = 'Cryptocoin'/>
+                <input type = {"text"} className = 'project_inputs' 
+                onChange = {(e) => {setName(e.target.value)}} placeholder = 'Cryptocoin'/>
 
                 <label> Description (some words about project): </label>
-                <input type = {"text"} className = 'project_inputs' onChange = {(e) => {setDescription(e.target.value)}} placeholder = 'It`s a project for...'/>
+                <input type = {"text"} className = 'project_inputs' 
+                onChange = {(e) => {setDescription(e.target.value)}} placeholder = 'It`s a project for...'/>
 
                 <label> Token tokenPrice: </label> {/*Shold be calculated later*/} 
-                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setTokenPrice(Number(e.target.value))}} placeholder = '10'/>
+                <input type = {"number"} className = 'project_inputs' 
+                onChange = {(e) => {setTokenPrice(Number(e.target.value))}} placeholder = '10'/>
 
                 <label> Full token supply: </label>
-                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setFullTokenSupply(Number(e.target.value))}} placeholder = '10000'/>
+                <input type = {"number"} className = 'project_inputs' 
+                onChange = {(e) => {setFullTokenSupply(Number(e.target.value))}} placeholder = '10000'/>
 
                 <label> Keywords: </label>
-                <input className = 'project_inputs' onChange = {(e) => {setKeyWords(e.target.value)}} placeholder = 'education/internet-things/farming-system'/>
+                <select className = 'project_inputs' 
+                onChange = {(e) => {setKeyWords(e.target.value)}} placeholder = 'education/internet-things/farming-system'>
+                    <option> education </option>
+                    <option> farming system </option>
+                    <option> internet-things </option>
+                </select>
 
                 <label> Public vesting (After today's date!!): </label>
                 <input className = 'project_inputs' type='date' placeholder = '2023.01.28' min = {toString(todayDate)}
                 onChange = {(e) => {setPublicVesting(e.target.value)}}/>
 
                 <label> Real money supply (just really real): </label>
-                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setRealMoneySupply(Number(e.target.value))}} placeholder = '1000'/>
+                <input type = {"number"} className = 'project_inputs' 
+                onChange = {(e) => {setRealMoneySupply(Number(e.target.value))}} placeholder = '1000'/>
 
                 <label> Staking reward(percent): </label>
-                <input type = {"number"} step = {0.01} className = 'project_inputs' onChange = {(e) => {setStakingPercent(Number(e.target.value))}} placeholder = '0.05'/>
+                <input type = {"number"} step = {0.01} className = 'project_inputs' 
+                onChange = {(e) => {setStakingPercent(Number(e.target.value))}} placeholder = '0.05'/>
 
                 <label> Predict on money supply: </label>
-                <input type = {"number"} className = 'project_inputs' onChange = {(e) => {setPredictMoneySupply(Number(e.target.value))}} placeholder = '2000'/>
+                <input type = {"number"} className = 'project_inputs' 
+                onChange = {(e) => {setPredictMoneySupply(Number(e.target.value))}} placeholder = '2000'/>
 
                 <label>Presentation</label>
-                <input type = "file" en accept = '.pptx' name = "presentation" onChange = { (e) => {setPresentation(e.target.files[0]); console.log(e.target.files[0])} }/>
+                <input type = "file" accept = '.pptx' name = "presentation" 
+                onChange = { (e) => {setPresentation(e.target.files[0]); console.log(e.target.files[0])} }/>
 
                 <button type = 'submit' onClick={() => {addProject()}}> Create project </button>
             </div>

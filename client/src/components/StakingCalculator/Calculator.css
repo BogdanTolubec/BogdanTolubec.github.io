@@ -1,4 +1,5 @@
 .calculator_wrapper{
+    width: 80%;
     padding: 10px;
     display: flex;
     flex-direction: column;

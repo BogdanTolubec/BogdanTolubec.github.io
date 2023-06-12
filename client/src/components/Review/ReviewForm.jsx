@@ -10,13 +10,17 @@ import ProjectBoxesArray from '../Main/ProjectBoxesArray/ProjectBoxesArray'
 const ReviewForm = observer(() => {
     const [Project_box_modal_active, set_Project_box_modal_active] = useState(false)
     const {project} = useContext(Context)
-    let isListOfProjectEmpty = true
+    const [isListOfProjectEmpty, setIsListOfProjectsEmpty] = useState()
 
     useEffect ( () => {
         fetchProjects().then(data => {
             if(data.length !== 0){
-                data = data.filter(element => element.reviewed === false)
+                setIsListOfProjectsEmpty(false)
+                data = data.filter(element => element.reviewed == false)
                 project.setProjects(data) //loading data about all projects after page loading
+            }
+            else{
+                setIsListOfProjectsEmpty(true)
             }
         })
     }, [])
@@ -25,7 +29,7 @@ const ReviewForm = observer(() => {
         <main className='main'>
             <div className='projects_wrapper'>
 
-            {!isListOfProjectEmpty ? (
+            {isListOfProjectEmpty === false ? (
 
                 <><ProjectBoxesArray set_Project_box_modal_active={set_Project_box_modal_active} /><Project_box_pop_up setActive={set_Project_box_modal_active} active={Project_box_modal_active} isWatchlist={false}>
                         <div className="wrapper">

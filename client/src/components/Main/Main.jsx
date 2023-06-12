@@ -17,7 +17,7 @@ const Main = observer(() => {
     useEffect( () => {
         fetchProjects().then(data => {
             
-            data = data.filter(element => element.reviewed === true)
+            data = data?.filter(element => element.reviewed === true)
 
             if(data.length !== 0){
                 project.setProjects(data) //loading data about all projects after page loading

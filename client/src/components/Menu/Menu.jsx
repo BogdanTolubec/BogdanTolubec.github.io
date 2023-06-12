@@ -31,9 +31,9 @@ const Menu = observer(() => {
         navigate('/')
     }
 
-    const signUp = async (email, password) => {
+    const signUp = async (email, password, role) => {
         try{
-            let data = await registration(email, password);
+            let data = await registration(email, password, role);
             user.setUser(user)
             user.setIsAuth(true)
         } catch (e){
@@ -56,20 +56,25 @@ const Menu = observer(() => {
 
                 <li><Link to = {MAIN_PAGE_ROUTE}> Home </Link></li>
                 <li><Link to = {WATCHLIST_ROUTE}> Watchlist </Link></li>
-                <li><Link to = {CREATE_NEW_PROJECT_PAGE_ROUTE}> My Project </Link></li>
                 <li><Link to = {CALCULATOR_PAGE_ROUTE}> Calculator </Link></li>
 
 
                 {jwt_decode(localStorage.getItem('token')).role === 'ADMIN' ? 
-                (<><li><Link to={ADMIN_PAGE_ROUTE}>Admin panel</Link></li>
+                (<> <li><Link to = {CREATE_NEW_PROJECT_PAGE_ROUTE}> My Project </Link></li>
+                <li><Link to={ADMIN_PAGE_ROUTE}>Admin panel</Link></li>
                 <li><Link to={REVIEW_PAGE_ROUTE}>Review page</Link></li></>) : 
 
-                console.log("Hello User!")}
+                console.log("Hello ADMIN!")}
 
                 {jwt_decode(localStorage.getItem('token')).role === 'REVIEWER' ? 
                 (<li><Link to={REVIEW_PAGE_ROUTE}>Review page</Link></li>) : 
                 
                 console.log("Hello Reviewer!")}
+
+                {jwt_decode(localStorage.getItem('token')).role === 'PROJECT OWNER' ? 
+                (<li><Link to = {CREATE_NEW_PROJECT_PAGE_ROUTE}> My Project </Link></li>) : 
+                
+                console.log("Hello Project owner!")}
                 
                 <li><Link to = {MAIN_PAGE_ROUTE} onClick = {() => {logOut()}}>Log out</Link></li>
                 </ul>)

@@ -7,6 +7,7 @@ function Sign_up_modal({setActive, active, setSignUp}){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [role, setRole] = useState('USER')
 
     return(
         <Pop_up_modal setActive={setActive} active = {active}>
@@ -24,9 +25,16 @@ function Sign_up_modal({setActive, active, setSignUp}){
                 <div className = 'text-field__icon text-field__icon_password'>
                     <input type = "password" placeholder='********' value = {password} onChange = {(e) => {setPassword(e.target.value)} }/>
                 </div>
+
+                <label>Choose your role</label>
                 
-                <a hfer = '/'> I want to be a reviewer!  </a>
-            <button onClick={() => {setSignUp(email, password)}}> Sign Up</button>
+                <select className = 'role_choose' onChange = {(e) => {setRole(e.target.value)}}>
+                    <option>USER</option>
+                    <option>PROJECT OWNER</option>
+                    <option>INVESTOR</option>
+                    <option>REVIEWER</option>
+                </select>
+            <button onClick={() => {setSignUp(email, password, role)}}> Sign Up</button>
             </div>
         </Pop_up_modal>
     );
